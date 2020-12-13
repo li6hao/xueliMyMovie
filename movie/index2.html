@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .input{
+            float: left;
+            width: 500px;
+            margin-left: 300px;
+        }
+        .board{
+            border:gainsboro;
+            border-style: ridge;
+            width: 400px;
+        }
+        input{
+            outline-style: none;
+            margin-left: 10px;
+            margin-top: 10px;
+            height: 35px;
+            width: 300px;
+            border-style: none;
+        }
+        button{
+            border-style: none;
+            width: 405px;
+            height: 40px;
+            background-color: red;
+            color: white;
+        }
+        p{
+            height: 15px;
+            font-size: small;
+            color: rgb(119, 116, 113);
+        }
+        #content{
+            margin-right: 50px;
+            font-size: larger;
+            color: red;
+        }
+        #sp1{
+            margin-top: 180px;
+        }
+        #sp2{
+            margin-top: 80px;
+        }
+        #sp3{
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="input">
+        <div class="board">
+            <span>&nbsp;&nbsp;用&nbsp;户&nbsp;名&nbsp;&nbsp;</span> 
+            <input type="text" name="inputname" id="iptname">
+        </div>
+        <p class="notice1"></p>
+        <div class="board">
+            <span>&nbsp;设置密码&nbsp;&nbsp;</span>
+            <input type="password" name="password" id="iptpassword">
+        </div>
+        <p class="notice2"></p>
+        <button id="btn" class="btn">立即注册</button>
+    </div>
+    <div id="content">
+        <div id="sp1"></div>
+        <div  id="sp2"></div>
+        <div id="sp3"></div>
+    </div>
+</body>
+<script>
+    var pname;
+    var password;
+    var content
+    var iptname = document.getElementById("iptname");
+    var notice1 = document.getElementsByClassName("notice1")[0];
+    var iptpassword = document.getElementById("iptpassword");
+    var notice2 = document.getElementsByClassName("notice2")[0];
+    iptname.onfocus = function(){
+        notice1.innerHTML="支持中文数字";
+    }
+    iptname.onblur = function(){
+        if(iptname.value==""){
+            notice1.innerHTML="用户名不能为空";
+        }
+        else{
+            pname = iptname.value;
+            notice1.innerHTML="";
+        }
+    }
+    iptpassword.onfocus = function(){
+        notice2.innerHTML="建议使用两种字符组合";
+    }
+    iptpassword.onblur = function(){
+        if(iptpassword.value==""){
+            notice2.innerHTML="密码不能为空";
+        }
+        else{
+            password = iptpassword.value;
+            notice2.innerHTML="";
+        }
+    }
+    btn.onclick=function(){
+        if(password!=""&&pname!=""){
+            sp1.innerHTML="注册成功！";
+            sp2.innerHTML="用户名："+pname;
+            sp3.innerHTML="密码："+password;
+        }
+        var times = setTimeout(function(){
+            window.location.href='index.html';
+        },1800);
+    }
+</script>
+</html>
